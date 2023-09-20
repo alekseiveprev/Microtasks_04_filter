@@ -36,7 +36,8 @@ export const App: FC<{ name: string }> = ({ name }) => {
     setFilter(nameButton);
   };
   return (
-    <NewComponent/>
+    <NewComponent   currentMoney={currentMoney} onClickFilterHandler={onClickFilterHandler}
+    />
   );
 };
 
@@ -94,3 +95,10 @@ export const App: FC<{ name: string }> = ({ name }) => {
     </div>
   );  
 }; */
+
+
+
+
+
+
+
