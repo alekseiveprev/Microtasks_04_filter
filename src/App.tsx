@@ -1,8 +1,47 @@
 import { useState } from 'react';
 import { FC } from 'react';
+import { NewComponent } from './NewComponent';
 import './style.css';
 
 type FilterNype = 'all' | 'ruble' | 'dollar';
+
+export const App: FC<{ name: string }> = ({ name }) => {
+  const [money, setMoney] = useState([
+    { banknote: 'dollar', nominal: 100, number: 'a123456789' },
+    { banknote: 'dollar', nominal: 50, number: 'b123456789' },
+    { banknote: 'ruble', nominal: 100, number: 'c123456789' },
+    { banknote: 'dollar', nominal: 100, number: 'd123456789' },
+    { banknote: 'dollar', nominal: 50, number: 'e123456789' },
+    { banknote: 'ruble', nominal: 100, number: 'f123456789' },
+    { banknote: 'dollar', nominal: 50, number: 'j123456789' },
+    { banknote: 'ruble', nominal: 50, number: 'h123456789' },
+  ]);
+
+  let currentMoney = money;
+
+  const [filter, setFilter] = useState('all');
+  // let currentMoney = money.filter(filteredMoney => filteredMoney.banknote === 'ruble' );
+  if (filter === 'ruble') {
+    currentMoney = money.filter(
+      (filteredMoney) => filteredMoney.banknote === 'ruble'
+    );
+  }
+  if (filter === 'dollar') {
+    currentMoney = money.filter(
+      (filteredMoney) => filteredMoney.banknote === 'dollar'
+    );
+  }
+
+  const onClickFilterHandler = (nameButton: string) => {
+    setFilter(nameButton);
+  };
+  return (
+    <NewComponent/>
+  );
+};
+
+// код до д.з
+/* type FilterNype = 'all' | 'ruble' | 'dollar';
 
 export const App: FC<{ name: string }> = ({ name }) => {
   const [money, setMoney] = useState([
@@ -53,13 +92,5 @@ export const App: FC<{ name: string }> = ({ name }) => {
         <button onClick={() => onClickFilterHandler('dollar')}>dollars</button>
       </div>
     </div>
-  );
-  console.log();
-
-  /* return (
-    <div>
-      <h1>Hello {name}!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
-  ); */
-};
+  );  
+}; */
